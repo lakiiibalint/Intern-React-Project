@@ -2,6 +2,7 @@ import { MOVIES } from "../data/movies";
 import type { Movie } from "../models/Movie";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
+import { SortUp, SortDown } from "react-bootstrap-icons";
 import Button from "../components/Button";
 
 export default function Movies() {
@@ -116,7 +117,28 @@ export default function Movies() {
 
   return (
     <Container className="mt-4 p-3 bg-white rounded shadow-sm">
-      <h1 className="mb-3">Movies Collection</h1>
+    <div className="d-flex align-items-center mb-3 gap-2">
+      <label htmlFor="sort-select" className="me- ml- fw-semibold" >Sort By:</label>
+      <select
+        id="sort-select"
+        className="form-select form-select-sm"
+        style={{ width: "140px" }}
+        value={sortBy}
+        onChange={(e) =>
+          setSortBy(e.target.value as "rating" | "title" | "year")
+        }
+      >
+        <option value="title">Alphabetical</option>
+        <option value="rating">Rating</option>
+        <option value="year">Year</option>
+      </select>
+      <button
+        className="btn btn-dark btn-sm ms-2"
+        onClick={() => setSortDirection((prev) => (prev ==="asc" ? "desc" :"asc") )}
+      >
+        {sortDirection === "asc" ? <SortUp /> : <SortDown />}
+      </button>
+      </div>
       <table className="table table-hover table-striped align-middle">
         <thead className="table-dark">
           <tr>
