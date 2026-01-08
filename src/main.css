@@ -1,0 +1,11 @@
+/* Minimal Global Styles */
+body {
+  background-color: #f8f9fa;
+  font-family: "Lato", "Open Sans", "sans-serif";
+  padding-left: px;
+
+}
+
+#root {
+  min-height: 100vh;
+}
